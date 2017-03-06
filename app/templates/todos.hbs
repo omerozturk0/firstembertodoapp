@@ -1,21 +1,22 @@
-<section id="todoapp">
+<section class="todoapp">
   <header id="header">
     <h1>todos</h1>
-    {{input type="text" id="new-todo" placeholder="What needs to be done?" value=title action="createTodo"}}
+    {{input type="text" class="new-todo" placeholder="What needs to be done?" value=title action="createTodo"}}
   </header>
 
-  <section id="main">
+  {{#if hasTodo}}
+  <section class="main">
     {{outlet}}
 
-    <input type="checkbox" id="toggle-all">
-    {{input type="checkbox" id="toggle-all" checked=allAreDone change=(action "checkAllTodos")}}
+    <input type="checkbox" class="toggle-all">
+    {{input type="checkbox" class="toggle-all" checked=allAreDone change=(action "checkAllTodos")}}
   </section>
 
-  <footer id="footer">
-    <span id="todo-count">
+  <footer class="footer">
+    <span class="todo-count">
       <strong>{{remaining}}</strong> {{inflection}} left
     </span>
-    <ul id="filters">
+    <ul class="filters">
       <li>
         {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
       </li>
@@ -28,13 +29,14 @@
     </ul>
 
     {{#if hasCompleted}}
-      <button id="clear-completed" {{action "clearCompleted"}}>
+      <button class="clear-completed" {{action "clearCompleted"}}>
         Clear completed ({{completedCount}})
       </button>
     {{/if}}
   </footer>
+  {{/if}}
 </section>
 
-<footer id="info">
+<footer class="info">
   <p>Double-click to edit a todo</p>
 </footer>

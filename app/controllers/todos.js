@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
     },
 
     clearCompleted: function() {
-      let completed = this.get('completed');
+      var completed = this.get('completed');
 
       completed
         .toArray() // clone the array, so it is not bound while we iterate over and delete.
@@ -31,13 +31,17 @@ export default Ember.Controller.extend({
     },
 
     checkAllTodos: function() {
-      let todos = this.get('todos');
-      let allAreDone = this.get('allAreDone');
+      var todos = this.get('todos');
+      var allAreDone = this.get('allAreDone');
 
       todos.setEach('isCompleted', !allAreDone);
       todos.invoke('save');
     }
   },
+
+  hasTodo: Ember.computed('todos.@each.length', function() {
+    return this.get('todos.length');
+  }),
 
   active: Ember.computed('todos.@each.isCompleted', function() {
     return this.get('todos').filterBy('isCompleted', false);
