@@ -10,8 +10,8 @@ module.exports = function(environment) {
       apiKey: 'AIzaSyAwKtK8ZF9fY8At1GTXddRk_7OqdYWaBQ8',
       authDomain: 'firsttodoapp-834b2.firebaseapp.com',
       databaseURL: 'https://firsttodoapp-834b2.firebaseio.com',
-      storageBucket: '',
-      messagingSenderId: '221826280372'
+      storageBucket: "firsttodoapp-834b2.appspot.com",
+      messagingSenderId: "221826280372"
     },
     contentSecurityPolicy: {
       'default-src': "'none'",
