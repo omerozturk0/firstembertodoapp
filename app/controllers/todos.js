@@ -47,21 +47,19 @@ export default Ember.Controller.extend({
     return this.get('todos').filterBy('isCompleted', false);
   }),
 
-  remaining: Ember.computed('active', function() {
-    return this.get('active').length;
+  remaining: Ember.computed('active.length', function() {
+    return this.get('active.length');
   }),
 
   completed: Ember.computed('todos.@each.isCompleted', function() {
     return this.get('todos').filterBy('isCompleted');
   }),
 
-  completedCount: Ember.computed('completed', function() {
-    return this.get('completed').length;
+  completedCount: Ember.computed('completed.length', function() {
+    return this.get('completed.length');
   }),
 
-  hasCompleted: Ember.computed('completedCount', function() {
-    return this.get('completedCount') > 0;
-  }),
+  hasCompleted: Ember.computed.notEmpty('completed'),
 
   inflection: Ember.computed('remaining', function() {
     return this.get('remaining') === 1 ? 'item' : 'items';
